@@ -21,10 +21,4 @@ public class PersonController {
         log.info("representMe()");
         return service.getMyPerson();
     }
-
-    @GetMapping("/new-thread")
-    public void runNewThread() {
-        log.info("new-thread");
-        service.runNewThread();
-    }
 }
