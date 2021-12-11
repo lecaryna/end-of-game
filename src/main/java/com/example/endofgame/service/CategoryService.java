@@ -3,6 +3,7 @@ package com.example.endofgame.service;
 import com.example.endofgame.converter.CategoryConverter;
 import com.example.endofgame.dto.CategorySummary;
 import com.example.endofgame.entity.Category;
+import com.example.endofgame.exception.DeletingNonExistentObject;
 import com.example.endofgame.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -69,13 +70,15 @@ public class CategoryService {
         return converter.fromEntityToDto(saved);
     }
 
-    // TODO: fix the problem with non existent id
+
     @Transactional
-    public void deleteCategoryById(Long idOfCategoryToDelete) {
+    public void deleteCategoryById(Long idOfCategoryToDelete) throws DeletingNonExistentObject {
         log.info("deleting category with id: [{}]", idOfCategoryToDelete);
 
         if (repository.existsById(idOfCategoryToDelete)) {
             repository.deleteById(idOfCategoryToDelete);
+        } else {
+            throw new DeletingNonExistentObject(String.format("You're trying to delete non existent category with id: [%d]", idOfCategoryToDelete));
         }
     }
 }
