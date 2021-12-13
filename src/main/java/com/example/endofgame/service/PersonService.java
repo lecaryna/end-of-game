@@ -1,5 +1,4 @@
 package com.example.endofgame.service;
-
 import com.example.endofgame.converter.PersonConverter;
 import com.example.endofgame.dto.PersonSummary;
 import com.example.endofgame.repository.PersonRepository;
@@ -41,11 +40,6 @@ public class PersonService {
         Runnable newJob = () -> {
             log.info("inside lambda");
             log.info("I'm running by:[" + Thread.currentThread().getName() + "]");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         };
 
         workers.submit(newJob);
