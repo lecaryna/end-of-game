@@ -13,15 +13,16 @@
         <td>Category name</td>
         <td>Creation timestamp</td>
         <td>Update timestamp</td>
+        <td>Delete</td>
     </tr>
     </thead>
     <tbody>
 
     <tr th:each="cat: ${categories}">
-        <td th:text="${cat.name}">Shopping</td>
-        <td th:text="${cat.created}">2021-12-12</td>
-        <td th:text="${cat.updated}">2021-12-13</td>
-    </tr>
+        <td th:text="${cat.name()}">Shopping</td>
+        <td th:text="${cat.created()}">2021-12-12</td>
+        <td th:text="${cat.updated()}">2021-12-13</td>
+        <td><a th:href="@{'/web/delete-category/' + ${cat.id()}}" href="#">Delete me</a></td>    </tr>
     </tbody>
 
 </table>
