@@ -1,6 +1,7 @@
 package com.example.endofgame.controller;
 
 import com.example.endofgame.dto.CategorySummary;
+import com.example.endofgame.exception.DeletingNonExistentObject;
 import com.example.endofgame.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
